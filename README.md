@@ -4,4 +4,6 @@ Aplicação web que, ao receber uma foto do usuário, devolve a idade, após uma
 
 Esse repo é o lado do website. Mais sobre o backend pode ser encontrado [neste](https://github.com/igormcsouza/online-age-detection) repositório.
 
-## How to access the Frontend
+## Como usar essa aplicação web?
+
+Ainda em desenvolvimento
