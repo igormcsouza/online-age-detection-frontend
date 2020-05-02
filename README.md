@@ -6,4 +6,20 @@ Esse repo é o lado do website. Mais sobre o backend pode ser encontrado [neste]
 
 ## Como usar essa aplicação web?
 
-Ainda em desenvolvimento
+Dentro do diretório, você pode rodar alguns comandos:
+
+    // Starts the development server.
+    npm start
+    // Bundles the app into static files for production.
+    npm run build
+    // Starts the test runner.
+    npm test
+    // Removes this tool and copies build dependencies, configuration files
+    // and scripts into the app directory. If you do this, you can’t go back!
+    npm run eject
+    
+Sugiro começar por:
+
+    cd oad-front
+    npm start
+
