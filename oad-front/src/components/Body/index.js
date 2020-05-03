@@ -16,9 +16,9 @@ export default class Body extends React.Component{
     }
 
     handleTakePhoto = async (dataUri) => {
-        console.log(typeof(dataUri))
+        console.log(dataUri)
         const response = await api.post(
-            '/age-detection', { file: dataUri.split("base64,") }, {
+            '/age-detection', { file: dataUri }, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Access-Control-Allow-Origin": "*",
@@ -42,13 +42,28 @@ export default class Body extends React.Component{
                 return (
                     <div id='main-body'>
                         <div id='section'>
-                            <p> Sua Faixa Etaria e [{ this.state.api_response }] anos de idade.</p>
+                            <h1> Sua Faixa Etaria e [{ this.state.api_response }] anos de idade.</h1>
+                            <Button 
+                                onClick={() => {
+                                    this.setState({renderCase: ""})
+                                }}
+                                text='Voltar'
+                            />
                         </div>
                     </div>
                 )
             case 'load':
                 return (
-                    <h1>UNDER CONSTRUCTION</h1>
+                    <div id='main-body'>
+                        <div id='section'>
+                            <input 
+                                type="file" 
+                                accept="image/*" 
+                                capture 
+                                onChange={ (dataUri) => { this.handleTakePhoto(dataUri) } } 
+                            />
+                        </div>
+                    </div>
                 )
 
             case 'take':
