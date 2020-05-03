@@ -1,0 +1,17 @@
+div#main-body {
+    max-width: 700;
+    margin: 20px;
+    padding: 0 20px;
+}
+
+div#section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
