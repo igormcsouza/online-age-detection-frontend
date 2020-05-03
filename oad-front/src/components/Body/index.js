@@ -11,10 +11,12 @@ import Button from './Button'
 
 export default class Body extends React.Component{
     state = {
-        renderCase: ''
+        renderCase: '',
+        api_response: null
     }
 
     handleTakePhoto = async (dataUri) => {
+        console.log(typeof(dataUri))
         const response = await api.post(
             '/age-detection', { file: dataUri.split("base64,") }, {
                 headers: {
@@ -27,10 +29,23 @@ export default class Body extends React.Component{
         )
 
         console.log(response)
+
+        this.setState({
+            renderCase: "done",
+            age: response.status === '200'? response.data.age: 'Nao foi possivel achar uma idade!',
+        })
     }
 
     renderOnScreen(param){
         switch(param) {
+            case 'done':
+                return (
+                    <div id='main-body'>
+                        <div id='section'>
+                            <p> Sua Faixa Etaria e [{ this.state.api_response }] anos de idade.</p>
+                        </div>
+                    </div>
+                )
             case 'load':
                 return (
                     <h1>UNDER CONSTRUCTION</h1>
