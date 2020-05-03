@@ -1,5 +1,5 @@
 import React from 'react'
-import FormData from 'form-data'
+// import FormData from 'form-data'
 import Camera from 'react-html5-camera-photo';
 
 import api from '../../services/api'
@@ -16,7 +16,7 @@ export default class Body extends React.Component{
 
     handleTakePhoto = async (dataUri) => {
         const response = await api.post(
-            '/age-detection', {file: dataUri}, {
+            '/age-detection', { file: dataUri.split("base64,") }, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Access-Control-Allow-Origin": "*",
