@@ -1,23 +1,40 @@
 import React from 'react'
-import './styles.css'
-import Button from './Button'
+import FormData from 'form-data'
 import Camera from 'react-html5-camera-photo';
+
+import api from '../../services/api'
+
+import './styles.css'
 import 'react-html5-camera-photo/build/css/index.css';
+
+import Button from './Button'
 
 export default class Body extends React.Component{
     state = {
         renderCase: ''
     }
 
-    handleTakePhoto (dataUri) {
-        // Do stuff with the photo...
-        console.log(dataUri);
+    handleTakePhoto = async (dataUri) => {
+        const response = await api.post(
+            '/age-detection', {file: dataUri}, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Authorization", 
+                    "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+                }
+            }
+        )
+
+        console.log(response)
     }
 
     renderOnScreen(param){
         switch(param) {
             case 'load':
-                return <p>LOAD</p>
+                return (
+                    <h1>UNDER CONSTRUCTION</h1>
+                )
 
             case 'take':
                 return (
