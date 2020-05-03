@@ -18,9 +18,14 @@ export default class Body extends React.Component{
     }
 
     handleTakePhoto = async (dataUri) => {
+        let formdata = new FormData()
+        formdata.append('file', dataUri) // Looks like dataURI is not a valid type! 
+
         console.log(dataUri)
         const response = await api.post(
-            '/age-detection', { file: dataUri }, {
+            '/age-detection', 
+            formdata, 
+            {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Access-Control-Allow-Origin": "*",
@@ -34,7 +39,8 @@ export default class Body extends React.Component{
 
         this.setState({
             renderCase: "done",
-            age: response.status === '200'? response.data.age: 'Nao foi possivel achar uma idade!',
+            age: response.data.age,
+            image: response.data.image
         })
     }
 
