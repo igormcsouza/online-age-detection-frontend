@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: >
+        npm start
+    volumes:
+        - './oad-front:/oad-front'
+    ports:
+        - 7898:3000
